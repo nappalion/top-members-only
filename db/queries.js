@@ -1,8 +1,22 @@
 const pool = require("./pool");
 
-async function getUser(username) {
+async function getUserByUsername(username) {
   const { rows } = await pool
     .query(`SELECT * FROM users WHERE username=$1`, [username])
+    .then((res) => {
+      console.log(`Retrieved user.`);
+      return res;
+    })
+    .catch((err) => {
+      throw err;
+    });
+
+  return rows[0];
+}
+
+async function getUserById(id) {
+  const { rows } = await pool
+    .query(`SELECT * FROM users WHERE id=$1`, [id])
     .then((res) => {
       console.log(`Retrieved user.`);
       return res;
@@ -67,7 +81,8 @@ async function deleteMessage(id) {
 }
 
 module.exports = {
-  getUser,
+  getUserByUsername,
+  getUserById,
   createUser,
   getMessages,
   createMessage,

@@ -4,6 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const pgPool = require("./db/pool");
 const pgSession = require("connect-pg-simple")(session);
+const passport = require("passport");
 
 const sessionStore = new pgSession({
   pool: pgPool,
@@ -23,6 +24,11 @@ app.use(
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
   })
 );
+
+require("./db/passport");
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/", (req, res) => {
   console.log(req.session);
