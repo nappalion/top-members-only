@@ -6,7 +6,7 @@
   <title><%= title %></title>
 </head>
 <body>
-  Welcome goofy goober signup
+  Welcome goofy goober login
   <% if (locals.errors) { %>
     <ul>
       <% errors.forEach(function(error) { %>
@@ -16,20 +16,15 @@
   <% } else if (locals.login_failed) { %>
    <p>Login failed. Please try again.</p>
   <% } %>
-  <form action="/signup" method="POST">
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required/>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required/>
+
+  <form action="/login" method="POST">
     <label for="username">Email:</label>
     <input type="text" id="username" name="username" required/>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required/>
-    <label for="confirm_password">Confirm Password:</label>
-    <input type="password" id="confirm_password" name="confirm_password" required/>
-    <button type="submit">Create my account</button>
+    <button type="submit">Sign me in</button>
   </form>
-  <p>Already a member?</p>
-  <a href="/login">Login</a>
+  <p>Need an account?</p>
+  <a href="/signup">Signup</a>
 </body>
 </html>

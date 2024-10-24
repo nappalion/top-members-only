@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  Are you an admin?
+  <% if (locals.errors) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <form action="/confirm-admin" method="POST">
+    <label for="password">Super Super Secret Password:</label>
+    <input type="password" id="password" name="password" required/>
+    <button type="submit">Prove it</button>
+  </form>
+  <p>Need an account?</p>
+  <a href="/messages">Skip</a>
+</body>
+</html>

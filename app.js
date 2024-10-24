@@ -30,9 +30,10 @@ require("./db/passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req, res) => {
-  console.log(req.session);
-  res.render("index");
-});
+const userRoutes = require("./routes/user-routes");
+const messageRoutes = require("./routes/message-routes");
+
+app.use("/", userRoutes);
+app.use("/messages", messageRoutes);
 
 app.listen(3000, () => console.log("app listening on port 3000!"));

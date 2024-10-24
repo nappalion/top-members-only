@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Messages</h1>
+  <% if (locals.messages) { %>
+    <% messages.forEach(function(message) { %>
+      <p><%= message.title %></p>
+      <p><%= message.text %></p>
+    <% }); %>
+  <% } %>
+  <a href="/logout">Logout</a>
+</body>
+</html>

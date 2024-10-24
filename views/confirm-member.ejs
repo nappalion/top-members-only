@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  Are you a club member?
+  <% if (locals.errors) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <form action="/confirm-member" method="POST">
+    <label for="password">Super Secret Password:</label>
+    <input type="password" id="password" name="password" required/>
+    <button type="submit">Prove it</button>
+  </form>
+  <p>Need an account?</p>
+  <a href="/confirm-admin">Skip</a>
+</body>
+</html>
